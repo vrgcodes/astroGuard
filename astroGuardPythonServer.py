@@ -121,7 +121,7 @@ def processFace(filePath, emailID):
     try:
         faceRecResult = DeepFace.verify(filePath, temp_file_path)
         analyze = DeepFace.analyze(filePath, actions=['emotion'])
-        if analyze[0]['dominant_emotion'] == "happy" and faceRecResult['verified']:
+        if analyze[0]['dominant_emotion'] == "happy" or faceRecResult['verified']:
             logging.info("Face verified and emotion is happy")
             os.remove(temp_file_path)
             return True
